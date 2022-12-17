@@ -1,0 +1,18 @@
+# Defaults for rtpproxy
+# I like to use same user as Kamailio when running on Kamailio box
+USER="rtpproxy"
+GROUP="rtpproxy"
+PIDFILE="/var/run/rtpproxy.pid"
+# replace with your network interface IP address
+LISTEN_ADDR=10.11.0.8
+
+# The control socket.
+#CONTROL_SOCK="unix:/var/run/rtpproxy.sock"
+# To listen on an UDP socket, uncomment this line:
+CONTROL_SOCK=udp:127.0.0.1:7722
+
+# Additional options that are passed to the daemon.
+EXTRA_OPTS="-l $LISTEN_ADDR"
+
+DAEMON_OPTS="-s $CONTROL_SOCK -u $USER:$GROUP -p $PIDFILE $EXTRA_OPTS -A 192.168.2.30"
+
